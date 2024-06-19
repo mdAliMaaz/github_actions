@@ -7,13 +7,23 @@ jobs:
         steps:
             - name: echo a string
               run: echo "Maaz you are doing grate"
-            - name: 
+            - name: random
               run: | 
                 node -v
                 npm -v
                 uname
                 ls -l
-
-               
-
+    parallel-job-macos:
+      runs-on: macos-latest          
+      steps: 
+        - name: View software version
+          run: sw_vers
+    dependent-job-windows:
+      runs-on: windows-latest
+      needs: run-shell-commands
+      steps:
+        - name: each a string
+          run: Write-Output "hey maazi from windows"
+        - name: Error
+          run: ls
 
